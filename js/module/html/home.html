@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Saved Tables</a></li>
+		<li><a id="logout" href="#">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- https://en.wikipedia.org/wiki/States_and_union_territories_of_India -->
+
+<div class="col-md-12">
+	<div style="padding-top: 10px;">
+		<div id="wikiGraphs">
+		  <h1><img class="logo" src="./images/logo-lg.png" /></h1>
+		  <div id="fetchTableForm">
+			  <div class="about">
+				<span>Enter</span> <span>Wikipedia</span> <span>URL</span> <span>and</span> <span>Convert</span> <span>Tables</span> <span>in</span> <span>it</span> <span>into</span> <span>Graphs</span>
+			  </div>
+			  <div class="form-group text-center">
+				<input type="webAddress" class="form-control input-lg" id="webAddress" placeholder="Your Wikipedia URL">
+			  </div>
+			  <div class="text-center">
+				<a id="getDataFromPage" class="btn btn-warning ">Fetch Tables</a>
+			  </div>
+			  <div class="versionAlpha alert">
+				This is <b>alpha version</b>. Right now, it can only convert URL's related to <b>World, India (Indian states or districts)</b> into choropleth or symbol Map Graphs
+			  </div>
+		  </div>
+		  <div id="generateGraphForm">
+			<div class="selectTable"></div>
+			<div class="selectColumn"></div>
+			<div class="text-center">
+				<a class="btn btn-success">Generate Graph</a></div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<div id="pageCache"></div>
+</div>
+<div class="col-md-12">
+	<div id="fetchedTables">
+		<h2 class="text-center" style="margin-bottom: 30px;">
+			<span>Fetched Table(s)</span>
+		</h2>
+		<div id="allTables">
+			
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModal" aria-hidden="true">
+	<div class="modal-dialog">
+      <div class="modal-content">
+		<h4>Loading</h4>
+		Table From Wikipedia
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+Application: 
+1. User enters wikipedia page links.
+2. Applicaion Convert tables in wikipedia pages into graph.
+3. Lets User choose the format of presentation of data.
+

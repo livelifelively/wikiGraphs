@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Social Cops</title>
+    <meta name="description" content="" />
+	<link href='./css/pace.css' rel='stylesheet' type='text/css' />
+	<link href='./css/bootstrap.min.css' rel='stylesheet' type='text/css' />
+	
+	<!-- TODO : load fonts on need only. -->
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	
+	<style>
+		#signUpLogin .input-group {width: 100%; margin-bottom: 10px;}
+		#signUpLogin .signUp {display: none;}
+		a {cursor: pointer; display: inline-block;}
+		table td, table th {text-align: center;}
+		table .action a {padding: 0px 5px;}
+		#pageCache {display: none;}
+		
+		input::-webkit-input-placeholder {color: green;}
+		input:-moz-placeholder {color: green;}
+		input:-ms-input-placeholder {color: green;}
+		
+		.loginHeader {padding: 20px 0px;}
+		.loginHeader img {margin: auto; display: block;}
+		
+		#loadingModal .modal-dialog {width: 190px; top: 100px; margin: auto;}
+		#loadingModal .modal-content {padding: 10px 20px 20px 20px; text-align: center;}
+		
+		#wikiGraphs {padding-top: 10%;}
+		#wikiGraphs h1 {text-align:center; font-size: 65px; color: rgb(13, 102, 140); margin-bottom: 0px; line-height: 1;}
+		#wikiGraphs .about {margin-bottom: 20px; font-size: 35px; text-align: center; font-family: 'Lobster', cursive; margin-top: 10px;}
+		#wikiGraphs .about span {color: #ffffff; letter-spacing: 2px; background: rgba(0, 0, 0, 0.3); display: inline-block; line-height: 1;}
+		#wikiGraphs .versionAlpha {font-size: 12px; text-align: center; margin-top: 15px; color: #E84949; background: rgba(249, 239, 238, 1); font-family: monospace; padding: 10px; border: 1px solid #E84949; width: 70%; margin: auto; margin-top: 30px;}
+		
+		#webAddress {text-align: center;}
+		
+		#fetchedTables {margin-top: 50px; border-top: 1px solid #d5d5d5; display: none;}
+		#fetchedTables .table {background: #ffffff}
+		#fetchedTables h2 span {color: #ffffff; font-family: 'Lobster', cursive; font-size: 45px;}
+		#fetchedTables .tableUnit {padding: 10px 20px; background: #f5f5f5; border-radius: 5px; border: 1px solid #d5d5d5; margin-bottom: 30px;}
+		
+		.logo {width: 70%;}
+		
+		html, body {height: 100%;}
+		body > div {min-height: 100%;}
+		body {background-image: url(./images/02.jpg); background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat;}
+		
+		.navbar-default {
+		  background-color: transparent;
+		  border-color: transparent;
+		}
+		
+		.navbar-default .navbar-toggle .icon-bar {
+		  background-color: #ffffff;
+		}
+		
+		.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #ffffff;}
+		.navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar { background-color: #000000;}
+		.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {color: #333; background-color: #f5f5f5;}
+		
+		@media (max-width: 370px) {
+			#wikiGraphs .about {font-size: 16px;}
+			.logo {width: 100%;}
+			#wikiGraphs .versionAlpha {width: 100%;}
+		}
+		
+		@media (min-width: 370px) and (max-width: 700px) {
+			#wikiGraphs .about {font-size: 20px;}
+			.logo {width: 70%;}
+		}
+		
+		@media (max-width: 768px) {
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {border-color: #d5d5d5; background: #ffffff;}
+		}
+		
+		@media (min-width: 768px) {
+			.navbar-default .navbar-nav>li>a {color: #ffffff;}
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {border-bottom: 1px solid;}
+		}
+		
+		@media (min-width: 992px) {
+			.logo {width: 55%;}
+		}
+		
+		.table-responsive{
+			overflow-x: auto;
+		}
+		
+		#generateGraphForm {display: none; color: #ffffff; background: rgba(0, 0, 0, 0.3); margin-top: 15px; padding: 10px; border: 1px solid #f5f5f5; border-radius: 2px;}
+	</style>
+  </head>
+  <body>
+    <div class="container">
+		<div class="row">
+			<div class="col-md-12" id="main">
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+		<a href="http://www.freepik.com/free-photos-vectors/travel">Travel vector designed by Freepik</a>
+	</footer>
+  </body>
+  <script data-main="js/init" src="js/vendor/require.js"></script>
+</html>

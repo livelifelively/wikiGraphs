@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>D3</title>
+    <meta name="description" content="" />
+	<link href='./css/bootstrap.min.css' rel='stylesheet' type='text/css' />
+	<script type="text/javascript" src="./js/vendor/d3.min.js"></script>
+  </head>
+  <body style="padding: 20px 30px;" >
+		
+		<div style="font-size:25px;"> Tutorial 1 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			d3.select("body")
+				.append("p")
+				.style("color", "red")
+				.text("something interesting");
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 2 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var canvas = d3.select("body")
+							.append("svg")
+							.attr("height", 500)
+							.attr("width", 500);
+							
+			var circle = canvas
+							.append("circle")
+							.attr("cx", 200)
+							.attr("cy", 300)
+							.attr("r", 10)
+							.attr("fill", "green");
+							
+			var rectangle = canvas
+								.append("rect")
+								.attr("width", 200)
+								.attr("height", 100)
+								.attr("fill", "red");
+								
+			var line = canvas
+							.append("line")
+							.attr("x1", 30)
+							.attr("y1", 100)
+							.attr("x2", 200)
+							.attr("y2", 300)
+							.attr("stroke", "blue")
+							.attr("stroke-width", 1);
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 3 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var dataArray = [40, 20, 50, 38];
+			
+			var canvas = d3.select("body")
+							.append("svg")
+							.attr("height", 500)
+							.attr("width", 500);
+							
+			var barChart = canvas
+								.selectAll("rect")
+								.data(dataArray)
+									.enter()
+										.append("rect")
+										.attr("height", 50)
+										.attr("width", function(d) {return (d*10);})
+										.attr("y", function(d, i) {return i*65;})
+										.attr("fill", "silver");
+										
+								
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 4 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var dataArray = [40, 20, 50, 38];
+			var height = 500;
+			var width = 500;
+			
+			var widthScale = d3.scale.linear()
+								.domain([0, 100])
+								.range([0, width]);
+			
+			var colorScale = d3.scale.linear()
+								.domain([0, 100])
+								.range(["red", "blue"]);
+			
+			var canvas = d3.select("body")
+							.append("svg")
+							.attr("height", height)
+							.attr("width", width);
+							
+			var barChart = canvas
+								.selectAll("rect")
+								.data(dataArray)
+									.enter()
+										.append("rect")
+										.attr("height", 50)
+										.attr("width", function(d) {return widthScale(d);})
+										.attr("y", function(d, i) {return i*65;})
+										.attr("fill", function(d) {return colorScale(d);});
+										
+								
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 5 and 6</div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var dataArray = [40, 20, 50, 38];
+			var height = 500;
+			var width = 500;
+			
+			var widthScale = d3.scale.linear()
+								.domain([0, 100])
+								.range([0, width]);
+			
+			var axis = d3.svg.axis()
+							.ticks(20)
+							.scale(widthScale);
+			
+			var colorScale = d3.scale.linear()
+								.domain([0, 100])
+								.range(["red", "blue"]);
+			
+			var canvas = d3.select("body")
+							.append("svg")
+							.attr("height", height)
+							.attr("width", width)
+							.append("g")
+							.attr("transform", "translate(30, 0)");
+							
+			var barChart = canvas
+								.selectAll("rect")
+								.data(dataArray)
+									.enter()
+										.append("rect")
+										.attr("height", 50)
+										.attr("width", function(d) {return widthScale(d);})
+										.attr("y", function(d, i) {return i*65;})
+										.attr("fill", function(d) {return colorScale(d);});
+			
+			var canvasAxis = canvas.append("g").call(axis).attr("transform", "translate(0, 280)");
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 7 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var dataArray = [40, 25, 50, 70];
+			var height = 500;
+			var width = 1000;
+			
+			dataArray.sort(function(a, b) { return b-a; })
+			
+			var widthScale = d3.scale.linear()
+								.domain([0, 100])
+								.range([0, 100]);
+			
+			var axis = d3.svg.axis()
+							.ticks(20)
+							.scale(widthScale);
+			
+			var colorScale = d3.scale.linear()
+								.domain([0, 100])
+								.range(["red", "blue"]);
+			
+			var canvas = d3.select("body")
+							.append("svg")
+								.attr("height", height)
+								.attr("width", width)
+								.style("background", "red")
+								.append("g");
+							
+			var circleGap = 0;
+			var normalGap = 10;
+			
+			canvas.append("circle")
+				.attr("r", 43)
+				.attr("cx", 33)
+				.attr("fill", "green");
+			
+			var circleChart = canvas
+								.selectAll("circle")
+								.data(dataArray)												// update selection: update the existing elements only
+										.attr("r", function(d) {return widthScale(d);})
+										.attr("cx", function(d, i) {
+												circleGap = circleGap + widthScale(dataArray[(i)])
+												if(i) {
+													circleGap = circleGap + widthScale(dataArray[(i-1)]);
+												}
+												return circleGap;
+											})
+										.attr("cy", function(d) {return widthScale(d);})
+										.attr("fill", function(d) {return colorScale(d);})
+									.enter()													// enter selection: create new elements
+										.append("circle")
+										.attr("r", function(d) {return widthScale(d);})
+										.attr("cx", function(d, i) {
+												circleGap = circleGap + widthScale(dataArray[(i)])
+												if(i) {
+													circleGap = circleGap + widthScale(dataArray[(i-1)]);
+												}
+												return circleGap;
+											})
+										.attr("cy", function(d) {return widthScale(d);})
+										.attr("fill", function(d) {return colorScale(d);});
+		</script>
+		
+		<div style="font-size:25px;"> Tutorial 9 </div>
+		<div style="margin: 20px 0px;"></div>
+		<script>
+			var dataArray = [40, 25, 50, 70];
+			document.write("<div><b>original array: ["+dataArray+"]</b></div>");
+			
+			document.write("<div>descending : " + dataArray.sort(d3.descending) + " -- dataArray.sort(d3.descending)</div>");
+			document.write("<div>minimum : " + d3.min(dataArray) + " -- d3.min(dataArray)</div>");
+			document.write("<div>maximum : " + d3.max(dataArray) + " -- d3.max(dataArray)</div>");
+			document.write("<div>median : " + d3.median(dataArray) + " -- d3.median(dataArray)</div>");
+			document.write("<div>mean : " + d3.mean(dataArray) + " -- d3.mean(dataArray)</div>");
+			document.write("<div>sum : " + d3.sum(dataArray) + " -- d3.sum(dataArray)</div>");
+			document.write("<div>extent : " + d3.extent(dataArray) + " -- d3.extent(dataArray)</div>");
+			document.write("<div>shuffle : " + d3.shuffle(dataArray) + " -- d3.shuffle(dataArray)</div>");
+			
+		</script>
+  </body>
+</html>
